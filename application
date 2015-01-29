@@ -1,0 +1,16 @@
+import os,sys
+virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
+virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
+try:
+        exec(open(virtualenv, "rb").read(), dict(__file__=virtualenv))
+except IOError:
+        pass
+
+
+sys.path.append('/opt/repo')
+sys.path.append('/opt/repo/ROOT')
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'ROOT.project.settings'
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
