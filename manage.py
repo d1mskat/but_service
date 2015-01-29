@@ -1,4 +1,3 @@
-#!../but_service/bin/python
 import os
 import sys
 
