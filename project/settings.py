@@ -1,6 +1,7 @@
 from platform import node
 
-from project.settings_local import *
+DEVELOPMENT_HOST = 'vesperalwall860-HP-ENVY-m6-Notebook-PC'
+PRODUCTION_HOST = 'apache2-python.2.2.31300.but-service'
 
 if node() == DEVELOPMENT_HOST:
     from project.settings_development import *
