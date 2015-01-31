@@ -1,15 +1,6 @@
 
 from os.path import join, dirname, normpath
 
-# DATABASE_ENGINE = ''
-# DATABASE_NAME = ''
-# DATABASE_USER = ''
-# DATABASE_PASSWORD = ''
-# DATABASE_HOST = ''
-# DATABASE_PORT = ''
-
-# SECRET_KEY = ''
-
 # Used to provide absolute paths.  Normally the default is fine.
 LOCAL_PATH = normpath(join(dirname(__file__), '..'))
 
