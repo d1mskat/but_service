@@ -59,11 +59,21 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+	'default': {
+		'NAME': 'but_service_data',
+		'ENGINE': 'django.db.backends.mysql',
+		'USER': 'but_service',
+		'PASSWORD': 'bu7s3rv1c3',
+		'HOST': 'localhost',
+	}
 }
 
 # Internationalization
@@ -71,7 +81,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
