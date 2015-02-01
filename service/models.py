@@ -1,4 +1,5 @@
 from django.db import models
+import urllib3, base64
 
 class Order(models.Model):
 	ORDER_STATUS = (
@@ -20,6 +21,13 @@ class Order(models.Model):
 	def __str__(self):
 		return self.address
 
+	def save(self, *args, **kwargs):
+		super(Order, self).save(*args, **kwargs)
+		URL = "http://sms-fly.com/api/api.php"
+		mess = "%s. %s. %s" % (self.address, self.phone, self.breaking_type)
+		DATA = '<?xml version="1.0" encoding="utf-8" ?><request><operation>SENDSMS</operation><message start_time="AUTO" end_time="AUTO" lifetime="4" rate="120" desc="My first campaign " source="ipvideo"><body>'+mess+'</body><recipient>380632056432</recipient></message></request>'
+		pool = urllib3.PoolManager()
+		req = pool.urlopen('POST', URL, headers={'Authorization': 'Basic MzgwNjMyMDU2NDMyOmlsaWtlaDRja2luZzEy','Content-Type':'application/xml'}, body=DATA)
 
 class Cost(models.Model):
 	title = models.CharField('Цель расходов', max_length=255)
