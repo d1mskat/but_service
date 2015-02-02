@@ -25,7 +25,7 @@ class Order(models.Model):
 		super(Order, self).save(*args, **kwargs)
 		URL = "http://sms-fly.com/api/api.php"
 		mess = "%s. %s. %s" % (self.address, self.phone, self.breaking_type)
-		DATA = '<?xml version="1.0" encoding="utf-8" ?><request><operation>SENDSMS</operation><message start_time="AUTO" end_time="AUTO" lifetime="4" rate="120" desc="My first campaign " source="ipvideo"><body>'+mess+'</body><recipient>380962983764</recipient></message></request>'
+		DATA = '<?xml version="1.0" encoding="utf-8" ?><request><operation>SENDSMS</operation><message start_time="AUTO" end_time="AUTO" lifetime="4" rate="120" desc="My first campaign " source="BUT_SERVICE"><body>'+mess+'</body><recipient>380962983764</recipient></message></request>'
 		DATA = DATA.encode('utf-8')
 		pool = urllib3.PoolManager()
 		req = pool.urlopen('POST', URL, headers={'Authorization': 'Basic MzgwNjMyMDU2NDMyOmlsaWtlaDRja2luZzEy','Content-Type':'application/xml'}, body=DATA)	
